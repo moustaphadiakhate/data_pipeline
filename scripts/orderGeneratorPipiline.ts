@@ -68,13 +68,13 @@ Object.entries(commandsByClientWithQuantity).forEach( async ([clientEmail, items
   Object.entries(items).forEach(([itemName, quantity]) => {
     const item = niit_items.find(item => item.name === itemName);
     if (item) {
-      doc.text(`${itemName} x ${quantity} : ${item.price * quantity} $`);
+      doc.text(`${itemName} x ${quantity} : ${item.price * quantity} XOF`);
     } else {
       doc.text(`Article inconnu : ${itemName}`);
     }
   });
 
-  doc.moveDown().text(`Prix total : ${totalPrice} $`, { align: 'right' });
+  doc.moveDown().text(`Prix total : ${totalPrice} XOF`, { align: 'right' });
 
   doc.end();
 
