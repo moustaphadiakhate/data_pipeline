@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es2015", "dom"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "CommonJS",
+    "outDir": "lib",
+    "declaration": true
+  },
+  "include":["./src/**/*"],
+  "exclude": ["./specs/*"]
+}
