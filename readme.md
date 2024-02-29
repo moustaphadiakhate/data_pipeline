@@ -102,7 +102,7 @@ Sélectionnez le dossier et exécutez les commandes ci-dessous.
 
 ## Pour exécuter l'api
 
-1. `$ npm dev`
+1. `$ npm run dev`
 2. Allez sur `localhost:3009/health` dans un navigateur
    * La sortie normale ressemble à ceci :
    `{"status":200, "msg": "Api niit shop... Nothing to see here."}`

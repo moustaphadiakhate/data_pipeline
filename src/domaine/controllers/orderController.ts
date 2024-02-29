@@ -6,7 +6,7 @@ require('dotenv').config();
 const router = express.Router();
 
 router.post('/', Order, validateRequestParams, (req: Request, res: Response) => {
-  res.status(200).send('ok');
+  res.status(200).json({"status": "OK", "msg": "Ordered successfully"});
 });
 
 export default router;
