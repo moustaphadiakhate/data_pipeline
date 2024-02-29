@@ -111,7 +111,7 @@ Sélectionnez le dossier et exécutez les commandes ci-dessous.
 
  `$ npm run orderPipeline`
 
- Le script ci-dessus génère des fichiers JSON de commandes et des fichiers PDF de factures pour chaque client à partir des données extraites d'un fichier JSON contenant des événements de commande.
+ Le script ci-dessus génère des fichiers JSON de commandes et des fichiers PDF de factures pour chaque client à partir des données extraites d'un fichier JSON contenant des événements de commande. Les factures et fichiers JSON de commandes sont stockes dansles repertoires /scripts/commandes et /scripts/factures.
 
 
 1. **Lecture des données de commande :**
@@ -143,7 +143,7 @@ Ce pipeline automatise le processus de génération de commandes et de factures 
 
 ### Name: order
 ```
-curl --location --request GET 'http://localhost:3009/v1/niit_shop/order' \
+curl --location 'http://localhost:3009/v1/niit_shop/order' \
 --header 'Content-Type: application/json' \
 --data-raw '    {
     "client_email":"toto@niit.sn",
