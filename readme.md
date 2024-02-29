@@ -1,4 +1,4 @@
-# Cours sur le Data Pipeline dans le Contexte d'un E-commerce
+# Le Data Pipeline dans le Contexte d'un E-commerce
 
 ## Introduction au Data Pipeline :
 
@@ -107,7 +107,7 @@ Sélectionnez le dossier et exécutez les commandes ci-dessous.
    * La sortie normale ressemble à ceci :
    `{"status":200, "msg": "Api niit shop... Nothing to see here."}`
 
-# Scripts: Pipeline de Génération de Commandes et de Factures
+## Scripts de Pipeline de Génération de Commandes et de Factures
 
  `$ npm run orderPipeline`
 
@@ -153,6 +153,6 @@ curl --location --request GET 'http://localhost:3009/v1/niit_shop/order' \
 
 ### Name: get_order
 ```
-curl --location 'http://localhost:3009/v1/sdk/get_order&client_email=tata@niit.sn' \
+curl --location 'http://localhost:3009/v1/sdk/get_order&client_email=toto@niit.sn' \
 --data ''
 ```
