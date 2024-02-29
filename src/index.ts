@@ -12,7 +12,7 @@
   app.use(log4js.connectLogger(logger, { level: 'all' }));
   app.use(express.json());
 
-  app.all('/health', (req, res) => res.status(200).send('Api niit shop... Nothing to see here.'));
+  app.all('/health', (req, res) => res.status(200).json({"status":200, "msg": "Api niit shop... Nothing to see here."}));
   app.use('/v1/niit_shop', orderRoutes);
   app.use('/v1/sdk', projectorRoutes);
 

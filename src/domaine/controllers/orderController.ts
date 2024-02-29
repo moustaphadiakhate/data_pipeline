@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import axios, { AxiosRequestConfig } from 'axios';
 import { validateRequestParams } from "../services/validateRequestParams";
 import { Order } from "../../types/order/OrderRequest";
 

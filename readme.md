@@ -52,3 +52,107 @@ Prenons l'exemple d'un Data Pipeline pour gérer les commandes dans un e-commerc
 ## Conclusion :
 
 En résumé, un Data Pipeline est un élément essentiel de l'infrastructure d'un e-commerce, permettant de gérer efficacement les données et d'obtenir des insights précieux pour prendre des décisions commerciales éclairées et offrir une expérience client optimale. En comprenant les composants et le fonctionnement d'un Data Pipeline, les entreprises peuvent tirer parti de leurs données pour rester compétitives sur le marché en constante évolution du commerce électronique.
+
+# DEMO DATA PIPELINE API
+
+---
+
+## Exigences
+
+Pour le démo app, vous aurez besoin de Node.js et NPM sur votre environnement.
+
+---
+
+### Node
+- #### Installation de Node sur Windows
+
+  Allez simplement sur le [site officiel de Node.js](https://nodejs.org/) et téléchargez l'installateur.
+Assurez-vous également d'avoir `git` disponible dans votre PATH, `npm` pourrait en avoir besoin (vous pouvez trouver git [ici](https://git-scm.com/)).
+
+- #### Installation de Node sur Ubuntu
+
+  Vous pouvez installer nodejs et npm facilement avec apt install, exécutez simplement les commandes suivantes.
+
+      $ sudo apt install nodejs
+      $ sudo apt install npm
+
+- #### Autres systèmes d'exploitation
+  Vous pouvez trouver plus d'informations sur l'installation sur le [site officiel de Node.js](https://nodejs.org/) et le [site officiel de NPM](https://npmjs.org/).
+
+Si l'installation a réussi, vous devriez pouvoir exécuter la commande suivante.
+
+    $ node --version
+    v16.13.1
+
+    $ npm --version
+    8.3.0
+
+Si vous devez mettre à jour `npm`, vous pouvez le faire en utilisant `npm` ! Cool non ? Après avoir exécuté la commande suivante, rouvrez simplement la ligne de commande et soyez heureux.
+
+    $ npm install npm -g
+
+### NPM
+
+Sélectionnez le dossier et exécutez les commandes ci-dessous.
+
+   1. `$ git clone https://github.com/moustaphadiakhate/data_pipeline.git`
+   2. `$ cd data_pipeline`
+   3. Créez une copie de `.env.template` et renommez-la `.env`.
+   4. Retirez le `#` de chaque ligne.
+
+## Pour exécuter l'api
+
+1. `$ npm dev`
+2. Allez sur `localhost:3009/health` dans un navigateur
+   * La sortie normale ressemble à ceci :
+   `{"status":200, "msg": "Api niit shop... Nothing to see here."}`
+
+# Scripts: Pipeline de Génération de Commandes et de Factures
+
+ `$ npm run orderPipeline`
+
+ Le script ci-dessus génère des fichiers JSON de commandes et des fichiers PDF de factures pour chaque client à partir des données extraites d'un fichier JSON contenant des événements de commande.
+
+
+1. **Lecture des données de commande :**
+   - Lecture du contenu du fichier `events.json` qui contient les événements de commande.
+   - Transformation des données JSON en un tableau d'objets d'événements.
+
+2. **Regroupement des commandes par client avec quantité :**
+   - Utilisation de la fonction `reduce()` pour regrouper les commandes par adresse e-mail du client et calculer la quantité de chaque article commandé.
+
+3. **Génération des fichiers JSON de commandes et des fichiers PDF de factures :**
+   - Parcours de chaque entrée dans l'objet `commandsByClientWithQuantity`.
+   - Pour chaque client, calcul du prix total de la commande en multipliant le prix de chaque article par sa quantité.
+   - Génération du fichier JSON de commande contenant les détails de la commande et du prix total. Le fichier est enregistré dans le dossier "commandes".
+   - Génération du fichier PDF de facture contenant les détails de la commande et du prix total. Le fichier est enregistré dans le dossier "factures".
+   - Utilisation de `PDFDocument` pour créer le contenu du fichier PDF avec les détails de la commande.
+   - Envoi des fichiers PDF pour chaque client.
+   - Affichage des messages de confirmation pour chaque client dont la commande et la facture ont été générées.
+
+4. **Gestion des erreurs :**
+   - Utilisation d'un bloc `try-catch` pour capturer les erreurs potentielles lors de la génération des fichiers.
+   - Affichage des messages d'erreur en cas de problème.
+
+5. **Conclusion :**
+   - Affichage d'un message indiquant que la génération des commandes et des factures est terminée une fois que le traitement est effectué pour tous les clients.
+
+Ce pipeline automatise le processus de génération de commandes et de factures à partir des données d'événements de commande, en produisant des fichiers JSON et des fichiers PDF pour chaque client.
+
+## All Api endpoints
+
+### Name: order
+```
+curl --location --request GET 'http://localhost:3009/v1/niit_shop/order' \
+--header 'Content-Type: application/json' \
+--data-raw '    {
+    "client_email":"toto@niit.sn",
+    "item":"react"
+    }'
+```
+
+### Name: get_order
+```
+curl --location 'http://localhost:3009/v1/sdk/get_order&client_email=tata@niit.sn' \
+--data ''
+```
